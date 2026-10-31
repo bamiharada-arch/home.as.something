@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HOME AS... A virtual art exhibition exploring one theme through different perspectives.">
+  <title>HOME AS... | Virtual Art Exhibition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#29251f; --cream:#f5f0e8; --paper:#e9e0d4; --muted:#766c60;
+      --line:rgba(41,37,31,.18); --gold:#ad8d66; --dark:#292622;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:82px; }
+    body { margin:0; background:var(--cream); color:var(--ink); font-family:'DM Sans',sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; }
+    img { max-width:100%; }
+    .topbar { position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:18px 5vw; background:rgba(41,38,34,.97); color:#fff8ee; }
+    .brand { display:flex; gap:12px; align-items:center; text-transform:uppercase; letter-spacing:.2em; font-size:10px; line-height:1.7; white-space:nowrap; }
+    .brand-mark { font:30px/1 Georgia,serif; }
+    .brand small { display:block; font-size:8px; opacity:.72; letter-spacing:.25em; }
+    nav { display:flex; gap:22px; flex-wrap:wrap; justify-content:flex-end; font-size:9px; text-transform:uppercase; letter-spacing:.16em; }
+    nav a { opacity:.8; } nav a:hover { opacity:1; color:#d8bd98; }
+    .hero { min-height:88vh; position:relative; display:grid; place-items:center; text-align:center; color:#fff9f0; padding:100px 24px 70px; background:linear-gradient(90deg,rgba(21,19,18,.78),rgba(26,24,25,.35)),url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=2200&q=85') center/cover; }
+    .hero-content { max-width:850px; }
+    .eyebrow,.section-kicker { font-size:10px; letter-spacing:.3em; text-transform:uppercase; }
+    h1 { font:400 clamp(3.5rem,10vw,8rem)/.9 'Playfair Display',serif; letter-spacing:.025em; margin:28px 0; text-transform:uppercase; }
+    h1 em { display:block; font-size:.62em; text-transform:none; line-height:1.25; }
+    .hero-sub { letter-spacing:.27em; font-size:10px; text-transform:uppercase; margin-bottom:22px; }
+    .hero-copy { max-width:550px; margin:0 auto 30px; line-height:1.9; font-size:13px; color:rgba(255,249,240,.88); }
+    .outline-btn,.dark-btn { display:inline-flex; align-items:center; gap:18px; border:1px solid currentColor; padding:14px 22px; border-radius:40px; background:transparent; color:inherit; letter-spacing:.16em; text-transform:uppercase; font-size:9px; cursor:pointer; transition:.2s; }
+    .outline-btn:hover { background:#fff8ee; color:var(--ink); }
+    section { padding:88px 7vw; }
+    .section-kicker { color:var(--muted); margin-bottom:16px; }
+    h2 { font:400 clamp(2.3rem,5vw,4.5rem)/1.08 'Playfair Display',serif; margin:0; }
+    h3 { font-family:'Playfair Display',serif; font-weight:400; }
+    .intro-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:8vw; align-items:start; }
+    .body-copy { max-width:700px; color:#62594f; font-size:13px; line-height:2; }
+    .body-copy p { margin:0 0 16px; }
+    .quote { font:italic 24px/1.5 'Playfair Display',serif; color:#51483f; border-left:1px solid var(--gold); padding-left:22px; margin-top:24px; }
+    .functions { background:var(--paper); }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:35px; }
+    .section-head p { max-width:420px; color:var(--muted); font-size:12px; line-height:1.9; margin:0; }
+    .function-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+    .function-card { border-top:1px solid var(--gold); padding:18px 12px 10px 0; }
+    .function-card .number { color:var(--gold); font-size:10px; letter-spacing:.2em; }
+    .function-card h3 { font-size:22px; margin:13px 0 9px; }
+    .function-card p { color:var(--muted); font-size:11px; line-height:1.8; margin:0; }
+    .ph-gallery { background:#f7f3ed; }
+    .place-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+    .place-card { background:#fffaf3; }
+    .place-card img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; background:#d8cbb9; }
+    .place-copy { padding:17px; }
+    .place-copy .location { color:var(--gold); font-size:9px; letter-spacing:.15em; text-transform:uppercase; }
+    .place-copy h3 { font-size:22px; margin:8px 0; }
+    .place-copy p { color:var(--muted); font-size:11px; line-height:1.8; margin:0; }
+    .note { color:var(--muted); font-size:10px; line-height:1.7; margin-top:18px; }
+    .exhibition { background:var(--dark); color:#f5eee4; }
+    .exhibition .section-kicker { color:#c6a982; }
+    .exhibition .section-head p { color:#cfc4b7; }
+    .theme-intro { max-width:760px; color:#d5cbbf; font-size:13px; line-height:2; margin:20px 0 38px; }
+    .art-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px 20px; }
+    .art-card { cursor:pointer; border:0; padding:0; text-align:left; color:inherit; background:transparent; }
+    .art-image { width:100%; aspect-ratio:4/5; overflow:hidden; background:#574e43; }
+    .art-image img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s; }
+    .art-card:hover img { transform:scale(1.04); }
+    .art-meta { display:flex; justify-content:space-between; gap:12px; padding-top:14px; }
+    .art-title { font:400 23px 'Playfair Display',serif; }
+    .art-tag { color:#c6a982; font-size:9px; letter-spacing:.15em; padding-top:6px; }
+    .art-artist { color:#c6a982; text-transform:uppercase; letter-spacing:.12em; font-size:9px; margin-top:8px; }
+    .art-desc { color:#cfc4b7; font-size:11px; line-height:1.8; margin-top:8px; }
+    .credits { background:var(--paper); }
+    .credits-grid { display:grid; grid-template-columns:1fr 1fr; gap:8vw; margin-top:38px; }
+    .member-list { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .member { border-top:1px solid var(--line); padding-top:14px; }
+    .member span { color:var(--gold); font-size:9px; letter-spacing:.16em; }
+    .member h3 { font-size:22px; margin:8px 0; }
+    .member p,.credit-copy { color:var(--muted); font-size:11px; line-height:1.9; }
+    .closing { text-align:center; padding:90px 7vw; }
+    .closing p { max-width:550px; margin:20px auto 28px; color:var(--muted); font-size:12px; line-height:1.9; }
+    .dark-btn { color:var(--ink); }
+    .dark-btn:hover { background:var(--ink); color:var(--cream); }
+    footer { background:#24211f; color:#d8cec1; display:flex; justify-content:space-between; gap:20px; padding:25px 7vw; font-size:9px; text-transform:uppercase; letter-spacing:.16em; }
+    .modal { position:fixed; inset:0; z-index:30; display:none; place-items:center; background:rgba(18,17,16,.9); padding:20px; }
+    .modal.open { display:grid; }
+    .modal-box { max-width:900px; width:100%; display:grid; grid-template-columns:1.1fr 1fr; background:var(--cream); color:var(--ink); position:relative; }
+    .modal-box img { width:100%; height:100%; max-height:78vh; object-fit:cover; }
+    .modal-copy { padding:clamp(22px,4vw,48px); align-self:center; }
+    .modal-copy h2 { font-size:clamp(2rem,4vw,3.4rem); margin-bottom:16px; }
+    .modal-copy p { font-size:12px; line-height:1.9; color:var(--muted); }
+    .close { position:absolute; right:10px; top:10px; border:0; background:var(--cream); width:36px; height:36px; border-radius:50%; cursor:pointer; font-size:23px; }
+    @media(max-width:900px) { .function-grid { grid-template-columns:repeat(3,1fr); } .place-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:650px) { .topbar { align-items:flex-start; flex-direction:column; } nav { justify-content:flex-start; gap:13px; } section { padding:65px 6vw; } .intro-grid,.credits-grid { grid-template-columns:1fr; gap:25px; } .art-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px 12px; } .function-grid { grid-template-columns:repeat(2,1fr); } .modal-box { grid-template-columns:1fr; max-width:520px; max-height:90vh; overflow:auto; } .modal-box img { height:280px; } footer { flex-direction:column; text-align:center; } }
+    @media(max-width:420px) { .art-grid,.place-grid { grid-template-columns:1fr; } .art-image { aspect-ratio:5/4; } h1 { font-size:3.2rem; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home"><span class="brand-mark">⌂</span><span>HOME AS...<small>A virtual art exhibition</small></span></a>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a><a href="#about-art">About Art</a><a href="#philippines">PH Galleries</a><a href="#exhibition">Our Exhibition</a><a href="#credits">Credits</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">A group virtual art exhibition</div>
+        <h1>Home <em>as...</em></h1>
+        <div class="hero-sub">One theme, different perspectives</div>
+        <p class="hero-copy">Home is not always a building or an address. It can be found in people, memories, places, and the feelings that make us feel connected.</p>
+        <a class="outline-btn" href="#about-art">Begin exploring <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section id="about-art">
+      <div class="intro-grid">
+        <div><div class="section-kicker">01 / Understanding art</div><h2>Art gives shape to the things we feel.</h2></div>
+        <div class="body-copy">
+          <p>Art is a way people express ideas, emotions, experiences, and ways of seeing the world. It can take many forms, including painting, sculpture, photography, music, design, performance, and digital creations.</p>
+          <p>Art does not only belong inside museums. We can encounter it in our homes, streets, clothing, celebrations, nature, and everyday experiences. It can help us communicate, remember, question, connect, and see ordinary things differently.</p>
+          <div class="quote">“Art helps us notice meaning in the world around us.”</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="functions" id="functions">
+      <div class="section-head">
+        <div><div class="section-kicker">02 / Why art matters</div><h2>Functions of art</h2></div>
+        <p>Art can serve different purposes at the same time. These are some common ways art functions in people's lives and communities.</p>
+      </div>
+      <div class="function-grid">
+        <article class="function-card"><div class="number">01</div><h3>Personal</h3><p>Allows individuals to express feelings, identity, imagination, and personal experiences.</p></article>
+        <article class="function-card"><div class="number">02</div><h3>Social</h3><p>Brings people together, communicates shared concerns, and encourages conversation.</p></article>
+        <article class="function-card"><div class="number">03</div><h3>Cultural</h3><p>Preserves traditions, stories, beliefs, and the identity of a community.</p></article>
+        <article class="function-card"><div class="number">04</div><h3>Practical</h3><p>Combines creativity and usefulness in objects, spaces, architecture, and design.</p></article>
+        <article class="function-card"><div class="number">05</div><h3>Aesthetic</h3><p>Creates visual or sensory experiences that can inspire, move, or delight us.</p></article>
+      </div>
+    </section>
+
+    <section class="ph-gallery" id="philippines">
+      <div class="section-head">
+        <div><div class="section-kicker">03 / Art in the Philippines</div><h2>Places to experience art</h2></div>
+        <p>Art galleries and museums give people a chance to encounter artworks, learn about artists, and explore different stories and perspectives.</p>
+      </div>
+      <div class="place-grid">
+        <!-- Replace each image URL below with your own photo when ready. -->
+        <article class="place-card">
+          <img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=900&q=85" alt="Art displayed inside a gallery">
+          <div class="place-copy"><div class="location">Manila, Philippines</div><h3>National Museum of Fine Arts</h3><p>A museum featuring Philippine fine art, including paintings and sculptures that reflect the country's artistic history and culture.</p></div>
+        </article>
+        <article class="place-card">
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=900&q=85" alt="Paintings displayed in an art museum">
+          <div class="place-copy"><div class="location">Antipolo, Rizal</div><h3>Pinto Art Museum</h3><p>A contemporary art museum known for its galleries, sculpture spaces, and setting surrounded by gardens and architecture.</p></div>
+        </article>
+        <article class="place-card">
+          <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?auto=format&fit=crop&w=900&q=85" alt="Contemporary art exhibition">
+          <div class="place-copy"><div class="location">Taguig, Metro Manila</div><h3>Metropolitan Museum of Manila</h3><p>A museum presenting modern and contemporary art, exhibitions, and creative perspectives from the Philippines and beyond.</p></div>
+        </article>
+        <article class="place-card">
+          <img src="https://images.unsplash.com/photo-1577083288073-40892c0860a4?auto=format&fit=crop&w=900&q=85" alt="Artwork in a cultural exhibition space">
+          <div class="place-copy"><div class="location">Pasay City, Philippines</div><h3>Cultural Center of the Philippines</h3><p>A major cultural institution supporting the arts through exhibitions, performances, and programs across different art forms.</p></div>
+        </article>
+      </div>
+      <p class="note">Image note: These are replaceable sample gallery images, not verified photographs of the named institutions. Replace them with your own photos or properly credited images before presenting.</p>
+    </section>
+
+    <section class="exhibition" id="exhibition">
+      <div class="section-kicker">04 / The group's exhibition</div>
+      <div class="section-head">
+        <h2>HOME AS...</h2>
+        <p>Seven interpretations. One shared theme. Each artwork offers a different way of understanding what home can mean.</p>
+      </div>
+      <p class="theme-intro">Home does not only refer to a physical house. It can also be found in the people we love, the memories we keep, the places that comfort us, and the experiences that shape who we are. Through this exhibition, our group explores how one familiar word can hold many different meanings.</p>
+
+      <div class="art-grid" id="artGrid">
+        <!-- EDIT ARTWORKS: change each image src, title, artist, short description, and data-description. -->
+        <button class="art-card" data-title="Home as a Foundation" data-artist="Artist / Member Name" data-description="Home as a foundation represents the people, values, and experiences that build and shape who we are. It is the starting point that supports us as we grow.">
+          <div class="art-image"><img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=900&q=85" alt="Sample image for Home as a Foundation"></div>
+          <div class="art-meta"><div><div class="art-title">Home as a Foundation</div><div class="art-artist">Artist / Member Name</div><div class="art-desc">The roots and values that shape us.</div></div><span class="art-tag">01</span></div>
+        </button>
+        <button class="art-card" data-title="Home as a Sanctuary" data-artist="Artist / Member Name" data-description="Home as a sanctuary is a place or feeling where we can pause, find peace, and feel protected. It offers a moment of rest from the noise and pressure of the outside world.">
+          <div class="art-image"><img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=900&q=85" alt="Sample image for Home as a Sanctuary"></div>
+          <div class="art-meta"><div><div class="art-title">Home as a Sanctuary</div><div class="art-artist">Artist / Member Name</div><div class="art-desc">A quiet place for peace and rest.</div></div><span class="art-tag">02</span></div>
+        </button>
+        <button class="art-card" data-title="Home as Family" data-artist="Artist / Member Name" data-description="Home as family focuses on the people who love, support, guide, and stand beside us. Family can be connected by blood, choice, or the care we give one another.">
+          <div class="art-image"><img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=85" alt="Sample image for Home as Family"></div>
+          <div class="art-meta"><div><div class="art-title">Home as Family</div><div class="art-artist">Artist / Member Name</div><div class="art-desc">The people who love and support us.</div></div><span class="art-tag">03</span></div>
+        </button>
+        <button class="art-card" data-title="Home as a Person" data-artist="Artist / Member Name" data-description="Sometimes home is not a location but a person. It can be someone who understands us, accepts us, and makes us feel that we belong.">
+          <div class="art-image"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=85" alt="Sample image for Home as a Person"></div>
+          <div class="art-meta"><div><div class="art-title">Home as a Person</div><div class="art-artist">Artist / Member Name</div><div class="art-desc">The person who makes us feel understood.</div></div><span class="art-tag">04</span></div>
+        </button>
+        <button class="art-card" data-title="Home as a Safe Place" data-artist="Artist / Member Name" data-description="Home as a safe place represents an environment where we can be ourselves without fear or judgment. It is where we feel accepted, secure, and free to be who we are.">
+          <div class="art-image"><img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=900&q=85" alt="Sample image for Home as a Safe Place"></div>
+          <div class="art-meta"><div><div class="art-title">Home as a Safe Place</div><div class="art-artist">Artist / Member Name</div><div class="art-desc">A space where we can be ourselves.</div></div><span class="art-tag">05</span></div>
+        </button>
+        <button class="art-card" data-title="Home as Memories" data-artist="Artist / Member Name" data-description="Home as memories is about the moments, experiences, and people that stay with us. Even when time passes or distance separates us, memories can help us carry a sense of home wherever we go.">
+          <div class="art-image"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=85" alt="Sample image for Home as Memories"></div>
+          <div class="art-meta"><div><div class="art-title">Home as Memories</div><div class="art-artist">Artist / Member Name</div><div class="art-desc">The moments we carry with us.</div></div><span class="art-tag">06</span></div>
+        </button>
+        <button class="art-card" data-title="Home as Comfort" data-artist="Artist / Member Name" data-description="Home as comfort can be found in familiar routines, small joys, favorite places, and simple moments that bring warmth. It is the feeling of being able to relax and feel at ease.">
+          <div class="art-image"><img src="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&w=900&q=85" alt="Sample image for Home as Comfort"></div>
+          <div class="art-meta"><div><div class="art-title">Home as Comfort</div><div class="art-artist">Artist / Member Name</div><div class="art-desc">The little things that bring warmth.</div></div><span class="art-tag">07</span></div>
+        </button>
+      </div>
+      <p class="note" style="color:#cfc4b7">Artwork note: All seven images are temporary sample images. Replace each image URL and edit the artist name and description to match your group's actual work.</p>
+    </section>
+
+    <section class="credits" id="credits">
+      <div class="section-kicker">05 / Acknowledgments</div>
+      <h2>Credits &amp; contributors</h2>
+      <div class="credits-grid">
+        <div>
+          <p class="credit-copy">This virtual exhibition was created as a group project. Each member contributes a personal interpretation of the theme HOME AS..., showing how art can communicate different experiences and meanings.</p>
+          <p class="credit-copy"><strong>Project title:</strong> HOME AS... — One Theme, Different Perspectives<br><strong>Class / Section:</strong> [Add class or section]<br><strong>Year:</strong> 2026</p>
+        </div>
+        <div class="member-list">
+          <!-- Replace the placeholder names and contributions below. Add or remove member blocks as needed. -->
+          <article class="member"><span>GROUP MEMBER 01</span><h3>[Member Name]</h3><p>Artwork: Home as a Foundation</p></article>
+          <article class="member"><span>GROUP MEMBER 02</span><h3>[Member Name]</h3><p>Artwork: Home as a Sanctuary</p></article>
+          <article class="member"><span>GROUP MEMBER 03</span><h3>[Member Name]</h3><p>Artwork: Home as Family / Person</p></article>
+          <article class="member"><span>GROUP MEMBER 04</span><h3>[Member Name]</h3><p>Artwork: Home as a Safe Place / Memories / Comfort</p></article>
+        </div>
+      </div>
+      <p class="credit-copy" style="margin-top:30px"><strong>Additional credits:</strong> Photography: [Add photographer / source]. AI-assisted artwork: [Add tool and relevant credit, if applicable]. Website design and development: [Add names]. Please credit all images and artwork sources used in the final exhibition.</p>
+    </section>
+
+    <section class="closing">
+      <div class="section-kicker">Thank you for visiting</div>
+      <h2>Where do you find<br>your sense of home?</h2>
+      <p>We hope this exhibition reminds you that home can mean something different to everyone. It may be a place, a person, a memory, or simply a feeling of belonging.</p>
+      <a class="dark-btn" href="#home">Return to the beginning ↑</a>
+    </section>
+  </main>
+
+  <footer><span>HOME AS... · Virtual Art Exhibition</span><span>One theme, different perspectives · 2026</span></footer>
+
+  <div class="modal" id="artModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button class="close" id="closeModal" aria-label="Close artwork details">×</button>
+      <img id="modalImage" src="" alt="">
+      <div class="modal-copy"><div class="section-kicker" id="modalArtist"></div><h2 id="modalTitle"></h2><p id="modalDescription"></p></div>
+    </div>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.art-card');
+    const modal = document.getElementById('artModal');
+    const closeModal = () => modal.classList.remove('open');
+
+    cards.forEach(card => card.addEventListener('click', () => {
+      const img = card.querySelector('img');
+      document.getElementById('modalImage').src = img.src;
+      document.getElementById('modalImage').alt = img.alt;
+      document.getElementById('modalTitle').textContent = card.dataset.title;
+      document.getElementById('modalArtist').textContent = card.dataset.artist;
+      document.getElementById('modalDescription').textContent = card.dataset.description;
+      modal.classList.add('open');
+    }));
+
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeModal(); });
+  </script>
+</body>
+</html>
